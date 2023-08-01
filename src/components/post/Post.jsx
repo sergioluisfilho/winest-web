@@ -12,45 +12,45 @@ const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
 
   //TEMPORARY
-  const liked = false;
+  const liked = true;
 
   return (
     <div className="post">
       <div className="container">
         <div className="user">
           <div className="userInfo">
-            <img src={post.profilePic} alt="" />
+            <img src={post.author.profilePictureUrl} alt="" />
             <div className="details">
               <Link
                 to={`/profile/${post.userId}`}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <span className="name">{post.name}</span>
+                <span className="name">{post.author.name}</span>
               </Link>
-              <span className="date">1 min ago</span>
+              <span className="date">{post.createdAt}</span>
             </div>
           </div>
           <MoreHorizIcon />
         </div>
         <div className="content">
-          <p>{post.desc}</p>
-          <img src={post.img} alt="" />
+          <p>{post.content}</p>
+          <img src={post.imgSource} alt="" />
         </div>
         <div className="info">
           <div className="item">
             {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
-            12 Likes
+            {post.Like.length}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
-            12 Comments
+            {post.Comment.length}
           </div>
-          <div className="item">
+          {/* <div className="item">
             <ShareOutlinedIcon />
             Share
-          </div>
+          </div> */}
         </div>
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments data={post.Comment} />}
       </div>
     </div>
   );
