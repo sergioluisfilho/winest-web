@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import api, { setAuthorizationToken } from "../api/axios";
 
 export const AuthContext = createContext();
 
@@ -26,12 +26,13 @@ export const AuthContextProvider = ({ children }) => {
     });
     const {
       data: { user, jwt },
-    } = await axios.post("http://localhost:3000/auth/login", {
+    } = await api.post("/auth/login", {
       email,
       password,
     });
 
     setToken(jwt);
+    setAuthorizationToken(jwt);
 
     //TO DO
     setCurrentUser({

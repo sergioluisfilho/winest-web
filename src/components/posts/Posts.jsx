@@ -1,15 +1,13 @@
 import Post from "../post/Post";
-import {useState, useEffect, useContext} from "react"
+import {useState, useEffect} from "react"
 import "./posts.scss";
-import axios from "axios";
-import { AuthContext } from "../../context/authContext";
+import api from "../../api/axios";
 
 const Posts = () => {
   const [posts, setPosts] = useState([])
-  const { token } = useContext(AuthContext);
 
   useEffect(()=>{
-    axios.get('http://localhost:3000/posts?offset=0&limit=20',{headers: {'Content-Type': 'application/json', 'Authorization':token}})
+    api.get('/posts?offset=0&limit=20')
     .then((response)=> {
       console.log(response.data.posts)
       setPosts(response.data.posts)

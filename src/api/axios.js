@@ -1,31 +1,15 @@
+// api.js
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
-  // baseURL: process.env.APP_API_BASE_URL,
+  baseURL: "http://localhost:3000", // Substitua pela URL da sua API
 });
 
-api.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("token");
-  config.headers.Authorization = token ? `${token}` : "";
-  return config;
-});
-
-api.interceptors.response.use(
-  function (response) {
-    // Do something with the response data
-    return response;
-  },
-  function (error) {
-    // Handle error responses here
-    if (error.response && error.response.status === 401) {
-      // Clear token and current user from localStorage
-      localStorage.removeItem("token");
-      localStorage.removeItem("currentUser");
-    }
-
-    return Promise.reject(error);
-  }
-);
+export const setAuthorizationToken = (token) => {
+  api.interceptors.request.use((config) => {
+    config.headers["Authorization"] = token;
+    return config;
+  });
+};
 
 export default api;

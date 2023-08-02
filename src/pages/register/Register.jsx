@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../api/axios";
 import "./register.scss";
 
 const Register = () => {
@@ -13,6 +13,7 @@ const Register = () => {
   })
 
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   const handleChange = e => {
     setInputs(prev =>({...prev, [e.target.name]: e.target.value  }))
@@ -21,7 +22,7 @@ const Register = () => {
   const handleClick = async e => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/register", {
+      const response = await api.post("/register", {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,
@@ -29,6 +30,7 @@ const Register = () => {
         phone: inputs.phoneNumber,
        })
        console.log(response);
+       navigate("/login")
     } catch (error) {
       console.error(error);
       setError(error);
