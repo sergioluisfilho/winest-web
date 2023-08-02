@@ -34,7 +34,7 @@ const Comments = ({data}) => {
         <button>Send</button>
       </div>
       {comments.map((comment) => (
-        <div className="comment">
+        <div className="comment" key={comment.id}>
           <img src={comment.User.profilePictureUrl} alt="" />
           <div className="info">
             <span>{comment.User.name}</span>
