@@ -10,9 +10,7 @@ import { useState } from "react";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
-
-  //TEMPORARY
-  const liked = true;
+  const [liked, setLiked] = useState(false);
 
   return (
     <div className="post">
@@ -37,7 +35,7 @@ const Post = ({ post }) => {
           <img src={post.imgSource} alt="" />
         </div>
         <div className="info">
-          <div className="item">
+          <div className="item" onClick={() => setLiked(!liked)}>
             {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
             {post.Like.length}
           </div>
