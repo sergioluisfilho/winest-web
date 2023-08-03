@@ -2,15 +2,69 @@ import "./post.scss";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+// import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/authContext";
 import Comments from "../comments/Comments";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import api from "../../api/axios";
+
+function checkCurrentUserLiked(likesArray, userId) {
+  console.log(likesArray)
+  console.log(userId)
+  for (const likeObject of likesArray) {
+    const {user} = likeObject
+    if (user.hasOwnProperty("id") && user.id === userId) {
+      return true; 
+    }
+  }
+  return false;
+}
 
 const Post = ({ post }) => {
+  const {currentUser} = useContext(AuthContext)
   const [commentOpen, setCommentOpen] = useState(false);
+  const [likesAmount, setLikesAmount] = useState(post.Like.length)
+  const [commentAmount, setCommentAmount] = useState(post.Comment.length)
+
   const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    const currentUserLiked = checkCurrentUserLiked(post.Like, currentUser.id)
+    setLiked(currentUserLiked)
+  }, [])
+
+  const likePost = async () => {
+    try {
+      api.post(`/posts/${post.id}/like`)
+      console.log('liked')
+      setLiked(true)
+      setLikesAmount(likesAmount+1)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const dislikePost = async () => {
+    try {
+      api.delete(`/posts/${post.id}/like`)
+      console.log('disliked')
+      setLiked(false)
+      setLikesAmount(likesAmount-1)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleLike = async () => {
+    if (!liked) {
+      await likePost()
+    } else {
+      await dislikePost()
+    }
+  }
+  
 
   return (
     <div className="post">
@@ -35,13 +89,13 @@ const Post = ({ post }) => {
           <img src={post.imgSource} alt="" />
         </div>
         <div className="info">
-          <div className="item" onClick={() => setLiked(!liked)}>
+          <div className="item" onClick={handleLike}>
             {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
-            {post.Like.length}
+            {likesAmount}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
-            {post.Comment.length}
+            {commentAmount}
           </div>
           {/* <div className="item">
             <ShareOutlinedIcon />
