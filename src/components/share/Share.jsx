@@ -2,10 +2,26 @@ import "./share.scss";
 import Image from "../../assets/img.png";
 import Map from "../../assets/map.png";
 import Friend from "../../assets/friend.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
+import api from "../../api/axios";
 
 const Share = () => {
+  const [file, setFile] = useState(null)
+  const [content, setContent] = useState("")
+
+  const upload = async () => {
+    const formData = new FormData();
+    formData.append("image", file)
+    formData.append("content", content)
+    const response = api.post('/posts', formData)
+    console.log(response);
+  }
+
+  const handleClick = e => {
+    e.preventDefault();
+    upload();
+  }
 
   const {currentUser} = useContext(AuthContext)
   return (
@@ -16,12 +32,12 @@ const Share = () => {
             src={currentUser.profilePic}
             alt=""
           />
-          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} />
+          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} onChange={(e) => setContent(e.target.value)}/>
         </div>
         <hr />
         <div className="bottom">
           <div className="left">
-            <input type="file" id="file" style={{display:"none"}} />
+            <input type="file" id="file" style={{display:"none"}} onChange={(e) => setFile(e.target.files[0])}/>
             <label htmlFor="file">
               <div className="item">
                 <img src={Image} alt="" />
@@ -38,7 +54,7 @@ const Share = () => {
             </div>
           </div>
           <div className="right">
-            <button>Share</button>
+            <button onClick={handleClick}>Share</button>
           </div>
         </div>
       </div>
