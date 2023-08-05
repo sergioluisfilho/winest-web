@@ -14,12 +14,12 @@ const Login = () => {
   const navigate = useNavigate()
 
   const handleChange = e => {
-    setInputs(prev =>({...prev, [e.target.name]: e.target.value  }))
+    setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
   const { login } = useContext(AuthContext);
 
-  useEffect(()=> console.log(inputs),[inputs])
+  useEffect(() => console.log(inputs), [inputs])
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -33,30 +33,23 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <div className="card">
-        <div className="left">
-          <h1>Hello World.</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
-            alias totam numquam ipsa exercitationem dignissimos, error nam,
-            consequatur.
-          </p>
-          <span>Don't you have an account?</span>
-          <Link to="/register">
-            <button>Register</button>
-          </Link>
-        </div>
-        <div className="right">
-          <h1>Login</h1>
-          <form>
-            <input type="text" placeholder="Username" name="email"onChange={handleChange}/>
-            <input type="password" placeholder="Password" name="password"onChange={handleChange}/>
-            <button onClick={handleLogin}>Login</button>
+    <div className="main">   
+        <h1 className="title">Winest</h1>   
+      <section className="container">
+        <form>
+          <input type="text" placeholder="Email" name="email" onChange={handleChange} />
           </form>
+        <form>
+          <input type="password" placeholder="Password" name="password" onChange={handleChange} />
+          </form>
+        <button id="login-btn" onClick={handleLogin}>Sign In</button>
+        <div className="signup">
+          <span id="signup-desc">Don't have an account?</span>
+          <span id="signup-desc"> </span>
+          <span id="signup-button">Sign up</span>
         </div>
-      </div>
-    </div>
+      </section>
+    </div >
   );
 };
 
