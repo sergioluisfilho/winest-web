@@ -11,9 +11,11 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts"
 import { AuthContext } from "../../context/authContext";
 import { useContext, useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import api from "../../api/axios";
 
 const Profile = () => {
+  const params = useParams();
   const { currentUser } = useContext(AuthContext);
   const [ userData, setUserData ] = useState({
     profilePictureUrl: 'https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
@@ -34,8 +36,15 @@ const Profile = () => {
   useEffect(() => {
     const {id} = currentUser; // trocar para pegar dos query params pq pode ser a pagina de qualquer usuario nao so do perfil
     getUserProfile(id)
-
   }, [])
+
+  const checkIsCurrentUserProfilePage = () => { // Vamos usar para habilitar funcoes de edicao na pagina
+    if (currentUser.id != params.id) {
+      return false
+    }
+
+    return true
+  }
 
   return (
     <div className="profile">
@@ -76,14 +85,16 @@ const Profile = () => {
                 <span>lama.dev</span>
               </div> */}
             </div>
-            <button>follow</button>
+            {/* <button>follow</button> */}
           </div>
           {/* <div className="right">
             <EmailOutlinedIcon />
             <MoreVertIcon />
           </div> */}
         </div>
-      <Posts/>
+      <Posts 
+        filterPostsByUserId={params.id} // A passagem desse id infere que esses posts serao filtrados por um userId
+      />
       </div>
     </div>
   );

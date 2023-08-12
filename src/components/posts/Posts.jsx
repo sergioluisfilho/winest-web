@@ -3,11 +3,18 @@ import {useState, useEffect} from "react"
 import "./posts.scss";
 import api from "../../api/axios";
 
-const Posts = () => { // Adicionar tratamento para se essa chamada for uma pagina de perfil
+const Posts = ({filterPostsByUserId}) => { // Adicionar tratamento para se essa chamada for uma pagina de perfil
   const [posts, setPosts] = useState([])
 
   useEffect(()=>{
-    api.get('/posts?offset=0&limit=20')
+    console.log(filterPostsByUserId)
+    api.get('/posts', {
+      params: {
+        offset: 0,
+        limit: 20,
+        userId: filterPostsByUserId ? filterPostsByUserId : null
+      }
+    })
     .then((response)=> {
       setPosts(response.data.posts)
     })
