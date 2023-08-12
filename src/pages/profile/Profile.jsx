@@ -26,7 +26,6 @@ const Profile = () => {
   const getUserProfile = async (id) => {
     try {
       const { data } = await api.get(`/page/${id}`)
-      console.log(data)
       setUserData(data)
     } catch (error) {
       alert(error.message)
