@@ -3,22 +3,28 @@ import {useState, useEffect} from "react"
 import "./posts.scss";
 import api from "../../api/axios";
 
-const Posts = ({filterPostsByUserId}) => { // Adicionar tratamento para se essa chamada for uma pagina de perfil
+const Posts = ({reload, filterPostsByUserId}) => {
   const [posts, setPosts] = useState([])
 
-  useEffect(()=>{
-    console.log(filterPostsByUserId)
-    api.get('/posts', {
-      params: {
-        offset: 0,
-        limit: 20,
-        userId: filterPostsByUserId ? filterPostsByUserId : null
-      }
-    })
-    .then((response)=> {
+  const fetchPosts = async () => {
+    try {
+      const response = await api.get('/posts', {
+        params: {
+          offset: 0,
+          limit: 20,
+          userId: filterPostsByUserId ? filterPostsByUserId : null // Tratamento para pagina de perfil
+        }
+      })
       setPosts(response.data.posts)
-    })
-  }, [])
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+  useEffect(() => {
+    fetchPosts()
+  }, [reload]); // Adiciona reload como dependência
+
 
   return <div className="posts">
     {posts.map(post=>(

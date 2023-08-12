@@ -23,7 +23,7 @@ const Comments = ({postId, onNewCommentCreated}) => {
 
   const createComment = async (content) => {
     try {
-      const response = await api.post(`/posts/${postId}/comments`, {content})
+      await api.post(`/posts/${postId}/comments`, {content})
       onNewCommentCreated()
       fetchComments()
       setContent("")

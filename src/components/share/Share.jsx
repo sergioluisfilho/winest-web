@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import api from "../../api/axios";
 
-const Share = () => {
+const Share = ({ onReload }) => {
   const [file, setFile] = useState(null)
   const [content, setContent] = useState("")
 
@@ -15,7 +15,10 @@ const Share = () => {
     formData.append("image", file)
     formData.append("content", content)
     try {
-      api.post('/posts', formData)
+      await api.post('/posts', formData)
+      onReload(); // Chama a função para avisar que houve uma atualização
+      setContent("")
+      setFile(null)
     } catch (error) {
       alert(error.message)
     }
@@ -35,7 +38,7 @@ const Share = () => {
             src={currentUser.profilePic}
             alt=""
           />
-          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} onChange={(e) => setContent(e.target.value)}/>
+          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} value={content} onChange={(e) => setContent(e.target.value)}/>
         </div>
         <hr />
         <div className="bottom">
