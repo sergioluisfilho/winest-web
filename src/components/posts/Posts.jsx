@@ -3,13 +3,12 @@ import {useState, useEffect} from "react"
 import "./posts.scss";
 import api from "../../api/axios";
 
-const Posts = () => {
+const Posts = () => { // Adicionar tratamento para se essa chamada for uma pagina de perfil
   const [posts, setPosts] = useState([])
 
   useEffect(()=>{
     api.get('/posts?offset=0&limit=20')
     .then((response)=> {
-      console.log(response.data.posts)
       setPosts(response.data.posts)
     })
   }, [])

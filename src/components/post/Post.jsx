@@ -11,8 +11,6 @@ import { useState, useEffect, useContext } from "react";
 import api from "../../api/axios";
 
 function checkCurrentUserLiked(likesArray, userId) {
-  console.log(likesArray)
-  console.log(userId)
   for (const likeObject of likesArray) {
     const {user} = likeObject
     if (user.hasOwnProperty("id") && user.id === userId) {
@@ -38,22 +36,20 @@ const Post = ({ post }) => {
   const likePost = async () => {
     try {
       api.post(`/posts/${post.id}/like`)
-      console.log('liked')
       setLiked(true)
       setLikesAmount(likesAmount+1)
     } catch (error) {
-      console.log(error)
+      alert(error)
     }
   }
 
   const dislikePost = async () => {
     try {
       api.delete(`/posts/${post.id}/like`)
-      console.log('disliked')
       setLiked(false)
       setLikesAmount(likesAmount-1)
     } catch (error) {
-      console.log(error)
+      alert(error)
     }
   }
 
@@ -63,6 +59,10 @@ const Post = ({ post }) => {
     } else {
       await dislikePost()
     }
+  }
+
+  const handleNewcomment = () => {
+    setCommentAmount(commentAmount+1)
   }
   
 
@@ -102,7 +102,7 @@ const Post = ({ post }) => {
             Share
           </div> */}
         </div>
-        {commentOpen && <Comments data={post.Comment} />}
+        {commentOpen && <Comments postId={post.id} onNewCommentCreated={handleNewcomment}/>}
       </div>
     </div>
   );

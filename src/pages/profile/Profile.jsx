@@ -9,25 +9,46 @@ import LanguageIcon from "@mui/icons-material/Language";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Posts from "../../components/posts/Posts"
+import { AuthContext } from "../../context/authContext";
+import { useContext, useEffect, useState } from "react";
+import api from "../../api/axios";
 
 const Profile = () => {
+  const { currentUser } = useContext(AuthContext);
+  const [ userData, setUserData ] = useState({
+    profilePictureUrl: 'https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+    name: 'Jane',
+    bio: 'Hi, taylor fan',
+  })
+
+  const getUserProfile = async (id) => {
+    try {
+      const { data } = await api.get(`/page/${id}`)
+      console.log(data)
+      setUserData(data)
+    } catch (error) {
+      alert(error.message)
+    }
+  }
+
+  useEffect(() => {
+    const {id} = currentUser; // trocar para pegar dos query params pq pode ser a pagina de qualquer usuario nao so do perfil
+    getUserProfile(id)
+
+  }, [])
+
   return (
     <div className="profile">
       <div className="images">
         <img
-          src="https://images.pexels.com/photos/13440765/pexels-photo-13440765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt=""
-          className="cover"
-        />
-        <img
-          src="https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load"
+          src={userData.profilePictureUrl}
           alt=""
           className="profilePic"
         />
       </div>
       <div className="profileContainer">
         <div className="uInfo">
-          <div className="left">
+          {/* <div className="left">
             <a href="http://facebook.com">
               <FacebookTwoToneIcon fontSize="large" />
             </a>
@@ -43,25 +64,24 @@ const Profile = () => {
             <a href="http://facebook.com">
               <PinterestIcon fontSize="large" />
             </a>
-          </div>
+          </div> */}
           <div className="center">
-            <span>Jane Doe</span>
+            <span>{userData.name}</span>
             <div className="info">
               <div className="item">
-                <PlaceIcon />
-                <span>USA</span>
+                <span>{userData.bio}</span>
               </div>
-              <div className="item">
+              {/* <div className="item">
                 <LanguageIcon />
                 <span>lama.dev</span>
-              </div>
+              </div> */}
             </div>
             <button>follow</button>
           </div>
-          <div className="right">
+          {/* <div className="right">
             <EmailOutlinedIcon />
             <MoreVertIcon />
-          </div>
+          </div> */}
         </div>
       <Posts/>
       </div>

@@ -19,8 +19,6 @@ const Login = () => {
 
   const { login } = useContext(AuthContext);
 
-  useEffect(()=> console.log(inputs),[inputs])
-
   const handleLogin = async (e) => {
     e.preventDefault()
     try {

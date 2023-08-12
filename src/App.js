@@ -10,7 +10,12 @@ import {
 import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/RightBar";
+import Chats from "./pages/chats/Chats";
+import Search from "./pages/search/Search";
 import Home from "./pages/home/Home";
+import Favorites from "./pages/favorites/Favorites";
+import Notifications from "./pages/notifications/Notifications";
+import Settings from "./pages/settings/Settings";
 import Profile from "./pages/profile/Profile";
 import "./style.scss";
 import { useContext } from "react";
@@ -27,7 +32,7 @@ function App() {
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar />
         <div style={{ display: "flex" }}>
-          {/* <LeftBar /> */}
+          <LeftBar />
           <div style={{ flex: 6 }}>
             <Outlet />
           </div>
@@ -61,6 +66,26 @@ function App() {
         {
           path: "/profile/:id",
           element: <Profile />,
+        },
+        {
+          path: "/chats",
+          element: <Chats />,
+        },
+        {
+          path: "/search",
+          element: <Search />,
+        },
+        {
+          path: "/notifications",
+          element: <Notifications />,
+        },
+        {
+          path: "/favorites",
+          element: <Favorites />,
+        },
+        {
+          path: "/settings",
+          element: <Settings />,
         },
       ],
     },

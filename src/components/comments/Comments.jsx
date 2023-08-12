@@ -3,18 +3,33 @@ import "./comments.scss";
 import { AuthContext } from "../../context/authContext";
 import api from "../../api/axios";
 
-const Comments = ({data}) => {
+const Comments = ({postId, onNewCommentCreated}) => {
   const { currentUser } = useContext(AuthContext);
-  const [comments, setComments] = useState(data) 
+  const [comments, setComments] = useState([]) 
   const [content, setContent] = useState("")
 
   useEffect(()=>{
-    console.log(comments)
-  }, [comments])
+    fetchComments()
+  }, [])
+
+  const fetchComments = async () => {
+    try {
+      const { data } = await api.get(`/posts/${postId}/comments`)
+      setComments(data?.comments)
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   const createComment = async (content) => {
-    const response = await api.post('/posts/14/comments', {content})
-    console.log(response.data)
+    try {
+      const response = await api.post(`/posts/${postId}/comments`, {content})
+      onNewCommentCreated()
+      fetchComments()
+      setContent("")
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
 
@@ -44,7 +59,7 @@ const Comments = ({data}) => {
     <div className="comments">
       <div className="write">
         <img src={currentUser.profilePic} alt="" />
-        <input type="text" placeholder="write a comment" onChange={(e) => setContent(e.target.value)} />
+        <input type="text" placeholder="write a comment" value={content} onChange={(e) => setContent(e.target.value)} />
         <button onClick={handleComment}>Send</button>
       </div>
       {comments.map((comment) => (

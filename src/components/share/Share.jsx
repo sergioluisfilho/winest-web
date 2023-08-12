@@ -14,8 +14,11 @@ const Share = () => {
     const formData = new FormData();
     formData.append("image", file)
     formData.append("content", content)
-    const response = api.post('/posts', formData)
-    console.log(response);
+    try {
+      api.post('/posts', formData)
+    } catch (error) {
+      alert(error.message)
+    }
   }
 
   const handleClick = e => {
@@ -44,14 +47,14 @@ const Share = () => {
                 <span>Add Image</span>
               </div>
             </label>
-            <div className="item">
+            {/* <div className="item">
               <img src={Map} alt="" />
               <span>Add Place</span>
-            </div>
-            <div className="item">
+            </div> */}
+            {/* <div className="item">
               <img src={Friend} alt="" />
               <span>Tag Friends</span>
-            </div>
+            </div> */}
           </div>
           <div className="right">
             <button onClick={handleClick}>Share</button>

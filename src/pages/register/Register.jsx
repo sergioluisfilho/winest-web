@@ -29,7 +29,6 @@ const Register = () => {
         birthday: inputs.birthdayDate,
         phone: inputs.phoneNumber,
        })
-       console.log(response);
        navigate("/login")
     } catch (error) {
       console.error(error);

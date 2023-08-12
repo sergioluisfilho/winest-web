@@ -1,4 +1,5 @@
 import "./leftBar.scss";
+import { NavLink } from 'react-router-dom';
 import Friends from "../../assets/1.png";
 import Groups from "../../assets/2.png";
 import Market from "../../assets/3.png";
@@ -23,72 +24,54 @@ const LeftBar = () => {
     <div className="leftBar">
       <div className="container">
         <div className="menu">
-          <div className="user">
+          {/* <div className="user">
             <img
               src={currentUser.profilePic}
               alt=""
             />
             <span>{currentUser.name}</span>
+          </div> */}
+          <div>
+            <NavLink to="/">
+              {/* <img src={Friends} alt="" /> */}
+              <span>Home</span>
+            </NavLink>
           </div>
-          <div className="item">
-            <img src={Friends} alt="" />
-            <span>Friends</span>
+          <div>
+            <NavLink to="/search">
+              {/* <img src={Market} alt="" /> */}
+              <span>Search</span>
+            </NavLink>
           </div>
-          <div className="item">
-            <img src={Groups} alt="" />
-            <span>Groups</span>
+          <div>
+            <NavLink to="/favorites">
+              {/* <img src={Market} alt="" /> */}
+              <span>Favorites</span>
+            </NavLink>
           </div>
-          <div className="item">
-            <img src={Market} alt="" />
-            <span>Marketplace</span>
+          <div>
+            <NavLink to="/chats">
+              {/* <img src={Messages} alt="" /> */}
+              <span>Chats</span>
+            </NavLink>
           </div>
-          <div className="item">
-            <img src={Watch} alt="" />
-            <span>Watch</span>
+          <div>
+            <NavLink to={`/profile/${currentUser.id}`}>
+              {/* <img src={Gallery} alt="" /> */}
+              <span>Profile</span>
+            </NavLink>
           </div>
-          <div className="item">
-            <img src={Memories} alt="" />
-            <span>Memories</span>
+          <div>
+            <NavLink to="/notifications">
+            {/* <img src={Market} alt="" /> */}
+            <span>Notifications</span>
+            </NavLink>
           </div>
-        </div>
-        <hr />
-        <div className="menu">
-          <span>Your shortcuts</span>
-          <div className="item">
-            <img src={Events} alt="" />
-            <span>Events</span>
-          </div>
-          <div className="item">
-            <img src={Gaming} alt="" />
-            <span>Gaming</span>
-          </div>
-          <div className="item">
-            <img src={Gallery} alt="" />
-            <span>Gallery</span>
-          </div>
-          <div className="item">
-            <img src={Videos} alt="" />
-            <span>Videos</span>
-          </div>
-          <div className="item">
-            <img src={Messages} alt="" />
-            <span>Messages</span>
-          </div>
-        </div>
-        <hr />
-        <div className="menu">
-          <span>Others</span>
-          <div className="item">
-            <img src={Fund} alt="" />
-            <span>Fundraiser</span>
-          </div>
-          <div className="item">
-            <img src={Tutorials} alt="" />
-            <span>Tutorials</span>
-          </div>
-          <div className="item">
-            <img src={Courses} alt="" />
-            <span>Courses</span>
+          <div>
+          <NavLink to="/settings">
+            {/* <img src={Memories} alt="" /> */}
+            <span>Settings</span>
+          </NavLink>
           </div>
         </div>
       </div>
