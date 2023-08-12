@@ -34,7 +34,7 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    const {id} = currentUser; // trocar para pegar dos query params pq pode ser a pagina de qualquer usuario nao so do perfil
+    const {id} = params;
     getUserProfile(id)
   }, [])
 
