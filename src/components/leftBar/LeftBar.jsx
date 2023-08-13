@@ -4,8 +4,8 @@ import { AuthContext } from "../../context/authContext";
 import { useContext } from "react";
 import Home from "../../assets/home.svg"
 import Search from "../../assets/search.svg"
-import Settings from "../../assets/settings-2.svg"
-import Message from "../../assets/Message.svg"
+import Settings from "../../assets/Settings-3.svg"
+import Message from "../../assets/Union.svg"
 import Notifications from "../../assets/Notifications.svg"
 import Favorites from "../../assets/favorites.svg"
 import Profile from "../../assets/profile.svg"
