@@ -4,10 +4,10 @@
   @include themify($themes) {
     flex: 0.6;
     position: sticky;
-    top: 70px;
-    height: calc(100vh - 70px);
+    top: 0.01%; // gambiarra, nao mexer
+    height: 100vh;
     overflow: scroll;
-    background-color: themed("bg");
+    background-color: themed("wine");
     color: themed("textColor");
 
     @include mobile{
@@ -19,54 +19,12 @@
     }
 
     .container {
-      padding: 20px;
-
-      hr {
-        margin: 20px 0px;
-        border: none;
-        height: 0.5px;
-        background-color: themed("border");
-      }
+      padding: 35%;
 
       .menu {
         display: flex;
         flex-direction: column;
-        gap: 20px;
-
-        span {
-          font-size: 12px;
-        }
-
-        .user {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-
-          img {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
-
-          span {
-            font-size: 14px;
-          }
-        }
-
-        .item {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-
-          img {
-            width: 30px;
-          }
-
-          span {
-            font-size: 14px;
-          }
-        }
+        gap: 50px;
       }
     }
   }

@@ -36,7 +36,7 @@ function Search() {
     alert('Search')
   }
   return (
-    <div>
+    <div className="search-page-container">
       <h1>Wine Search</h1>
       <div className="search">
           <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Today I'm looking for a dry red wine" />

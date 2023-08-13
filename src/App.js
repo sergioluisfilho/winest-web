@@ -7,9 +7,9 @@ import {
   Outlet,
   Navigate,
 } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
+// import Navbar from "./components/navbar/Navbar";
 import LeftBar from "./components/leftBar/LeftBar";
-import RightBar from "./components/rightBar/RightBar";
+// import RightBar from "./components/rightBar/RightBar";
 import Chats from "./pages/chats/Chats";
 import Search from "./pages/search/Search";
 import Home from "./pages/home/Home";
@@ -30,7 +30,7 @@ function App() {
   const Layout = () => {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
-        <Navbar />
+        {/* <Navbar /> */}
         <div style={{ display: "flex" }}>
           <LeftBar />
           <div style={{ flex: 6 }}>

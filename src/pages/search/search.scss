@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap'); // Importar a fonte Raleway
+
+
+
+.search-page-container {
+    display: flex; // Usar flexbox
+    justify-content: center; // Centrar horizontalmente
+    align-items: center; // Centrar verticalmente
+    flex-direction: column; // Organizar os filhos verticalmente
+
+    h1 {
+        font-family: 'Raleway', sans-serif; // Usar a fonte Raleway
+        font-weight: bold; // Negrito
+        font-size: 30px; // Tamanho da fonte 20px
+        color: #7A1334; // Cor
+        padding: 3%;
+      }
+
+  }
+  
