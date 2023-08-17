@@ -43,7 +43,8 @@ function Search() {
 
   const fetchIASuggestions = async () => {
     try {
-      const { data } = await api.post('/wines/sugest', {prompt: "Me recomende 3 vinhos citricos"})
+      const { data } = await api.post('/wines/sugest')
+      console.log(data)
       data?.content && alert(data.content)
     } catch (error) {
       console.log(error)
