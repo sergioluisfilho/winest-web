@@ -44,7 +44,7 @@ const Register = () => {
           <input className="credential-input" type="text" placeholder="Full name" name="fullname" onChange={handleChange} />
           </form>
         <form className="credential-form">
-          <input className="credential-input" type="text" placeholder="Username" name="name" onChange={handleChange} />
+          <input className="credential-input" type="text" placeholder="Name" name="name" onChange={handleChange} />
           </form>
           <form className="credential-form">
           <input className="credential-input" type="text" placeholder="Email" name="email" onChange={handleChange} />
