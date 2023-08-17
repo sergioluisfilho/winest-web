@@ -22,7 +22,7 @@ const Register = () => {
   const handleClick = async e => {
     e.preventDefault();
     try {
-      const response = await api.post("/register", {
+      await api.post("/register", {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,
@@ -53,7 +53,7 @@ const Register = () => {
           <input className="credential-input" type="password" placeholder="Password" name="password" onChange={handleChange} />
           </form>
           <form className="credential-form">
-          <input className="credential-input" type="text" placeholder="Date of Birth" name="birthdayDate" onChange={handleChange} />
+          <input className="credential-input" type="text" placeholder="Birth Date" name="birthdayDate" onChange={handleChange} />
           </form>
         <form className="credential-form">
           <input className="credential-input" type="text" placeholder="Phone number" name="phoneNumber" onChange={handleChange} />
