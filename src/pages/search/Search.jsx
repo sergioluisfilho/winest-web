@@ -2,71 +2,70 @@ import React, {useState, useEffect} from 'react'
 import "./search.scss";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Button from "@mui/material/Button";
+import Cards from "../../components/cards/Cards";
 import api from "../../api/axios";
-import Wine from "../../components/wine/Wine"
+// import Wine from "../../components/wine/Wine"
 
 
 function Search() {
-  const [searchText, setSearchText] = useState("")
+  const [filters, setFilters] = useState({
+    offset: 0,
+    limit: 10,
+    search: '',
+  })
+
   const [wines, setWines] = useState([])
 
   const fetchWines = async () => {
     try {
       const response = await api.get('/wines', {
-        params: {
-          offset: 0,
-          limit: 20,
-        }
+        params: filters
       })
-      setWines([...wines, ...response.data])
+
+      return response.data
     } catch (error) {
       alert(error.message)
     }
   }
 
   useEffect(() => {
-    fetchWines()
-  }, [])
+    fetchWines().then((data)=>{
+      setWines([...wines, ...data])
+    })
+  }, [filters])
 
-  useEffect(() => {
-    console.log(wines)
-  }, [wines])
+  const handleSeeMore = () => {
+    setFilters({
+        ...filters,
+      offset: filters.offset + 10,
+      })
+  }
 
   const handleSearchWine = () => {
-    alert('Search')
+    fetchWines().then((data) => {
+      setWines(data)
+    })
   }
+
+
+
   return (
     <div className="search-page-container">
       <h1>Wine Search</h1>
       <div className="search">
-          <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Today I'm looking for a dry red wine" />
-          <Button onClick={handleSearchWine} color="primary">
-            <SearchOutlinedIcon/>
-          </Button>
+          <input type="text" value={filters.search} onChange={(e) => {
+          setWines([])
+          setFilters({
+            ...filters,
+            offset: 0,
+            search: e.target.value
+          })}} placeholder="Today I'm looking for a dry red wine"/>
+            <Button onClick={handleSearchWine} color="primary">
+              <SearchOutlinedIcon/>
+            </Button>
         </div>
-      <div className="categories">
-         <button>
-            Red
-         </button>
-         <button>
-            White
-          </button>
-          <button>
-            Sweet
-          </button>
-          <button>
-            Dry
-          </button>
-          <button>
-            Old
-          </button>
-      </div>
-      <div className="wine-list">
-      {wines.map(wine=>(
-      <Wine wine={wine} key={wine.id}/>
-    ))}
-      </div>
-
+      <Cards wines={wines}/>
+      <Button onClick={handleSeeMore}>See more...</Button>
     </div>
   )
 }

@@ -13,8 +13,24 @@
         font-weight: bold; // Negrito
         font-size: 30px; // Tamanho da fonte 20px
         color: #7A1334; // Cor
-        padding: 3%;
+        padding: 2%;
       }
+
+    .search {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 16px;
+      width: 30%;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 44px;
+      margin-bottom: 5%;
+
+      input {
+        width: 100%;
+        border: 0;
+        opacity: 80%;
+      }
+    }
 
   }
   

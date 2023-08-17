@@ -18,9 +18,9 @@ const Profile = () => {
   const params = useParams();
   const { currentUser } = useContext(AuthContext);
   const [ userData, setUserData ] = useState({
-    profilePictureUrl: 'https://images.pexels.com/photos/14028501/pexels-photo-14028501.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
-    name: 'Jane',
-    bio: 'Hi, taylor fan',
+    profilePictureUrl: '',
+    name: '',
+    bio: '',
   })
 
   const getUserProfile = async (id) => {
