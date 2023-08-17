@@ -23,7 +23,7 @@ api.interceptors.response.use(
     ) {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
-      alert("Session expired, redirecting to login");
+      console.log("Session expired, redirecting to login");
       window.location.href = "/login";
     }
   }

@@ -28,7 +28,7 @@ const Profile = () => {
       const { data } = await api.get(`/page/${id}`)
       setUserData(data)
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 

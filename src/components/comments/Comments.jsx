@@ -17,7 +17,7 @@ const Comments = ({postId, onNewCommentCreated}) => {
       const { data } = await api.get(`/posts/${postId}/comments`)
       setComments(data?.comments)
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 
@@ -28,7 +28,7 @@ const Comments = ({postId, onNewCommentCreated}) => {
       fetchComments()
       setContent("")
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 

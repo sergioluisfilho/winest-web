@@ -18,7 +18,7 @@ const Share = () => {
       setFile(null)
       window.location.reload();
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 

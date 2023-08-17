@@ -25,7 +25,7 @@ const Login = () => {
       await login(inputs);
       navigate("/")
     } catch (e) {
-      alert(JSON.stringify(e));
+      console.log(JSON.stringify(e));
       // setError(e.response.data)
     }
   };

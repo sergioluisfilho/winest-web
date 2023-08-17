@@ -39,7 +39,7 @@ const Post = ({ post }) => {
       setLiked(true)
       setLikesAmount(likesAmount+1)
     } catch (error) {
-      alert(error)
+      console.log(error)
     }
   }
 
@@ -49,7 +49,7 @@ const Post = ({ post }) => {
       setLiked(false)
       setLikesAmount(likesAmount-1)
     } catch (error) {
-      alert(error)
+      console.log(error)
     }
   }
 

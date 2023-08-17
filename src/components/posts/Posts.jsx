@@ -21,7 +21,7 @@ const Posts = ({filterPostsByUserId}) => {
       })
       return data
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
   // useEffect(() => {
