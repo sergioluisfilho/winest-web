@@ -1,12 +1,10 @@
 import "./share.scss";
 import Image from "../../assets/img.png";
-import Map from "../../assets/map.png";
-import Friend from "../../assets/friend.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import api from "../../api/axios";
 
-const Share = ({ onReload }) => {
+const Share = () => {
   const [file, setFile] = useState(null)
   const [content, setContent] = useState("")
 
@@ -16,9 +14,9 @@ const Share = ({ onReload }) => {
     formData.append("content", content)
     try {
       await api.post('/posts', formData)
-      onReload(); // Chama a função para avisar que houve uma atualização
       setContent("")
       setFile(null)
+      window.location.reload();
     } catch (error) {
       alert(error.message)
     }
@@ -50,14 +48,6 @@ const Share = ({ onReload }) => {
                 <span>Add Image</span>
               </div>
             </label>
-            {/* <div className="item">
-              <img src={Map} alt="" />
-              <span>Add Place</span>
-            </div> */}
-            {/* <div className="item">
-              <img src={Friend} alt="" />
-              <span>Tag Friends</span>
-            </div> */}
           </div>
           <div className="right">
             <button onClick={handleClick}>Share</button>

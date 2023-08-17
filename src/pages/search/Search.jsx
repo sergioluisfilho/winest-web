@@ -59,11 +59,12 @@ function Search() {
             ...filters,
             offset: 0,
             search: e.target.value
-          })}} placeholder="Today I'm looking for a dry red wine"/>
+          })}} placeholder="Nicosia 2013 Vulkà Bianco (Etna)"/>
             <Button onClick={handleSearchWine} color="primary">
               <SearchOutlinedIcon/>
             </Button>
         </div>
+        <p>Can't find anything? try our <button>A.I. recommendation</button></p>
       <Cards wines={wines}/>
       <Button onClick={handleSeeMore}>See more...</Button>
     </div>
