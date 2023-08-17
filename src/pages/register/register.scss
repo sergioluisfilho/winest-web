@@ -38,32 +38,33 @@
       width: 80%;
     }
 
+    @media (max-width: 600px) {
+      height: 70%;
+    }
+
     .credential-form {
       background-color: #F2F2F2;
       border-radius: 20px;
       margin: 3% auto;
       margin-bottom: 25px;
       width: 85%;
-      height: 8%;
+      height: 9%;
 
-      @media (min-width: 960px) {
-        width: 80%;
-        height: 8%;
-        margin-top: 1%;
-        margin-bottom: 20px;
+      @media (max-width: 1200px) {
+        margin-bottom: 10px;
       }
 
       @media (max-width: 960px) or (max-height: 800px) {
         height: 8%;
         border-radius: 15px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         margin-top: 2%
       }
 
       @media (max-width: 600px) {
         width: 80%;
         height: 9%;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
       }
 
       .credential-input {
@@ -76,9 +77,9 @@
         top: 20%;
         height: 50%;
         width: 90%;
-        font-size: 17px;
+        font-size: 20px;
 
-        @media (min-width: 960px) {
+        @media (max-width: 960px) {
           font-size: 12px;
         }
 
@@ -108,7 +109,7 @@
       font-weight: lighter;
       border-radius: 15px;
 
-      @media (min-width: 960px) {
+      @media (max-width: 960px) {
         margin-top: 1%;
         font-size: 15px;
       }
@@ -137,7 +138,7 @@
 
       @media (min-width: 1200px) {
         margin-top: 4%;
-        font-size: 17px;
+        font-size: 2  7px;
       }
 
       @media (max-width: 960px) or (max-height: 800px) {
@@ -147,6 +148,7 @@
 
       @media (max-width: 600px) {
         font-size: 13px;
+        margin-top: 10%;
       }
 
       .signin-desc {
