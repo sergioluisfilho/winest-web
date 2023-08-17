@@ -24,7 +24,7 @@ function Search() {
 
       return response.data
     } catch (error) {
-      alert(error.message)
+      console.log(error.message)
     }
   }
 
@@ -41,10 +41,17 @@ function Search() {
       })
   }
 
-  const handleSearchWine = () => {
-    fetchWines().then((data) => {
-      setWines(data)
-    })
+  const fetchIASuggestions = async () => {
+    try {
+      const { data } = await api.post('/wines/sugest', {prompt: "Me recomende 3 vinhos citricos"})
+      data?.content && alert(data.content)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleIASuggestion = () => {
+    fetchIASuggestions()
   }
 
 
@@ -60,11 +67,11 @@ function Search() {
             offset: 0,
             search: e.target.value
           })}} placeholder="Nicosia 2013 Vulkà Bianco (Etna)"/>
-            <Button onClick={handleSearchWine} color="primary">
+            <Button color="primary">
               <SearchOutlinedIcon/>
             </Button>
         </div>
-        <p>Can't find anything? try our <button>A.I. recommendation</button></p>
+        <p>Can't find anything? try our <button onClick={handleIASuggestion}>A.I. recommendation</button></p>
       <Cards wines={wines}/>
       <Button onClick={handleSeeMore}>See more...</Button>
     </div>
