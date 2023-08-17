@@ -33,20 +33,22 @@ const Login = () => {
   };
 
   return (
-    <div className="main">   
+    <div className="login">   
         <h1 className="title">Winest</h1>   
       <section className="container">
-        <form>
-          <input type="text" placeholder="Email" name="email" onChange={handleChange} />
+        <form className="credential-form">
+          <input className="credential-input" type="text" placeholder="Email" name="email" onChange={handleChange} />
           </form>
-        <form>
-          <input type="password" placeholder="Password" name="password" onChange={handleChange} />
+        <form className="credential-form">
+          <input className="credential-input" type="password" placeholder="Password" name="password" onChange={handleChange} />
           </form>
-        <button id="login-btn" onClick={handleLogin}>Sign In</button>
-        <div className="signup">
-          <span id="signup-desc">Don't have an account?</span>
-          <span id="signup-desc"> </span>
-          <span id="signup-button">Sign up</span>
+        <button className="login-btn" onClick={handleLogin}>Sign In</button>
+        <div className="signup-content">
+          <span className="signup-desc">Don't have an account?</span>
+          <span className="signup-desc"> </span>
+          <Link className="link" to="/register">
+          <span className="signup-btn">Sign up</span>
+          </Link>
         </div>
       </section>
     </div >

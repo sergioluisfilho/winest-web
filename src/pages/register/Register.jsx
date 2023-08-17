@@ -38,34 +38,37 @@ const Register = () => {
   }
 
   return (
-    <div className="register">
-      <div className="card">
-        <div className="left">
-          <h1>Lama Social.</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero cum,
-            alias totam numquam ipsa exercitationem dignissimos, error nam,
-            consequatur.
-          </p>
-          <span>Do you have an account?</span>
-          <Link to="/login">
-          <button>Login</button>
+    <div className="register">   
+        <h1 className="title">Winest</h1>   
+      <section className="container">
+        <form className="credential-form">
+          <input className="credential-input" type="text" placeholder="Full name" name="fullname" onChange={handleChange} />
+          </form>
+        <form className="credential-form">
+          <input className="credential-input" type="text" placeholder="Username" name="name" onChange={handleChange} />
+          </form>
+          <form className="credential-form">
+          <input className="credential-input" type="text" placeholder="Email" name="email" onChange={handleChange} />
+          </form>
+        <form className="credential-form">
+          <input className="credential-input" type="password" placeholder="Password" name="password" onChange={handleChange} />
+          </form>
+          <form className="credential-form">
+          <input className="credential-input" type="text" placeholder="Date of Birth" name="birthdayDate" onChange={handleChange} />
+          </form>
+        <form className="credential-form">
+          <input className="credential-input" type="text" placeholder="Phone number" name="phoneNumber" onChange={handleChange} />
+          </form>
+          <button className="register-btn" onClick={handleClick}>Sign up</button>
+        <div className="signin-content">
+          <span className="signin-desc">Already have an account?</span>
+          <span className="signin-desc"> </span>
+          <Link className="link" to="/login">
+          <span className="signin-btn">Sign in</span>
           </Link>
         </div>
-        <div className="right">
-          <h1>Register</h1>
-          <form>
-            <input type="text" placeholder="Name" name="name" onChange={handleChange}/>
-            <input type="email" placeholder="Email" name="email" onChange={handleChange}/>
-            <input type="password" placeholder="Password" name="password" onChange={handleChange}/>
-            <input type="date" placeholder="Birthday date" name="birthdayDate" onChange={handleChange}/>
-            <input type="tel" placeholder="Phone number" name="phoneNumber" onChange={handleChange}/>
-            {error &&  "Ocorreu um erro, tente novamente"}
-            <button onClick={handleClick}>Register</button>
-          </form>
-        </div>
-      </div>
-    </div>
+      </section>
+    </div >
   );
 };
 
