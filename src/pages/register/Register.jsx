@@ -41,9 +41,6 @@ const Register = () => {
         <h1 className="title">Winest</h1>   
       <section className="container">
         <form className="credential-form">
-          <input className="credential-input" type="text" placeholder="Full name" name="fullname" onChange={handleChange} />
-          </form>
-        <form className="credential-form">
           <input className="credential-input" type="text" placeholder="Name" name="name" onChange={handleChange} />
           </form>
           <form className="credential-form">

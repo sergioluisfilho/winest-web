@@ -8,9 +8,9 @@
     color: #7A1334;
     text-align: center;
     width: 100%;
-    font-size: 54px;
+    font-size: 40px;
     font-weight: bold;
-    padding-top: 8%;
+    padding-top: 6%;
     margin-bottom: 3%;
 
     @media (max-width: 960px) or (max-height: 840px) {
@@ -30,8 +30,8 @@
     padding-top: 50px;
     border: none;
     margin: 0 auto;
-    height: 550px;
-    width: 800px;
+    height: 370px;
+    width: 600px;
 
     @media (max-width: 960px) {
       width: 70%;
@@ -45,14 +45,14 @@
 
     @media (max-width: 600px) {
       width: 80%;
-      height: 40%;
+      height: 30%;
     }
 
     .credential-form {
       background-color: #F2F2F2;
-      border-radius: 20px;
-      margin: 3% auto;
-      margin-bottom: 40px;
+      border-radius: 10px;
+      margin: 1% auto;
+      margin-bottom: 25px;
       width: 80%;
       height: 15%;
 
@@ -76,10 +76,14 @@
         top: 20%;
         height: 50%;
         width: 70%;
-        font-size: 20px;
+        font-size: 13px;
 
         @media (max-width: 960px) or (max-height: 840px) {
           font-size: 15px;
+        }
+
+        @media (max-width: 600px) {
+          font-size: 10px;
         }
       }
 
@@ -94,8 +98,9 @@
       width: 80%;
       height: 15%;
       margin-left: 10%;
-      margin-top: 5%;
+      margin-top: 3%;
       text-align: center;
+      border: none;
       font-size: 24px;
       border-radius: 15px;
       font-weight: lighter;
@@ -117,9 +122,9 @@
       display: inline-block;
       width: 100%;
       background-color: white;
-      margin-top: 8%;
+      margin-top: 6%;
       text-align: center;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: normal;
 
       @media (max-width: 960px) or (max-height: 840px) {
