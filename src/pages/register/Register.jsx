@@ -50,7 +50,7 @@ const Register = () => {
           <input className="credential-input" type="password" placeholder="Password" name="password" onChange={handleChange} />
           </form>
           <form className="credential-form">
-          <input className="credential-input" type="text" placeholder="Birth Date" name="birthdayDate" onChange={handleChange} />
+          <input className="credential-input" type="date" placeholder="Birth Date" name="birthdayDate" onChange={handleChange} />
           </form>
         <form className="credential-form">
           <input className="credential-input" type="text" placeholder="Phone number" name="phoneNumber" onChange={handleChange} />
