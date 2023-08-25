@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap'); // Importar a fonte Raleway
 
-.search-page-container {
+.favorites-page-container {
     display: flex; // Usar flexbox
     justify-content: center; // Centrar horizontalmente
     align-items: center; // Centrar verticalmente
@@ -37,35 +37,7 @@
         opacity: 80%;
       }
     }
-
-    .ai-desc {
-      display: inline-block;
-      width: 40%;
-      text-align: center;
-      color: #868686;
-      
-      .ai-tip {
-        font-size: 17px;
-        font-weight: normal;
-        padding-right: 2%;
-      }
-
-      .ai-btn {
-        background-color: #7A1334;
-        color: #fff;
-        width: 38%;
-        border: none;
-        font-size: 17px;
-        border-radius: 15px;
-        font-weight: normal;
-        transition: 0.1s;
-      }
-
-      .ai-btn:hover {
-        background-color: gray
-      }
-    }
-
+    
     .seeMore-btn {
       background-color: #7A1334;
       color: #fff;

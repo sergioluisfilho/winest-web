@@ -65,7 +65,6 @@ const Post = ({ post }) => {
     setCommentAmount(commentAmount+1)
   }
   
-
   return (
     <div className="post">
       <div className="container">

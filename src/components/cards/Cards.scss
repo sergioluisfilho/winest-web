@@ -1,7 +1,7 @@
 .card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
-    margin-top: 5%;
+    margin-top: 3%;
   
     .card {
       display: flex;
@@ -9,8 +9,8 @@
       align-items: center; // Centrar verticalmente
       flex-direction: column; // Organizar os filhos verticalmente
       background-color: #fff;
-      border: 1px solid #e0e0e0;
-      padding: 4px;
+      border: 2px solid #e0e0e0;
+      padding: 10px;
       padding-left: 10px;
       padding-right: 10px;
       border-radius: 8px;
@@ -22,12 +22,21 @@
   
       h3 {
         margin: 8px 0;
-        font-size: 18px;
+        font-size: 14px;
+        font-weight: lighter;
+        text-align: center;
       }
   
-      p {
+      div {
+        display: flex;
         font-size: 14px;
-        color: #666;
+        color: #7A1334;
+        justify-content: space-between;
+
+        img {
+          align-self: flex-start;
+          padding-right: 100%;
+        }
       }
     }
   }

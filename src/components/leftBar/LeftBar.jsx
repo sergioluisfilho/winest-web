@@ -7,7 +7,7 @@ import Search from "../../assets/search.svg"
 import Settings from "../../assets/Settings-3.svg"
 // import Message from "../../assets/Union.svg"
 // import Notifications from "../../assets/Notifications.svg"
-// import Favorites from "../../assets/favorites.svg"
+import Favorites from "../../assets/favorites.svg"
 import Profile from "../../assets/profile.svg"
 
 
@@ -29,11 +29,11 @@ const LeftBar = () => {
               <img src={Search} alt="" />
             </NavLink>
           </div>
-          {/* <div>
+          {<div>
             <NavLink to="/favorites">
               <img src={Favorites} alt="" />
             </NavLink>
-          </div> */}
+          </div>}
           {/* <div>
             <NavLink to="/chats">
               <img src={Message} alt="" />
@@ -50,9 +50,9 @@ const LeftBar = () => {
             </NavLink>
           </div> */}
           <div>
-          <NavLink to="/settings">
-            <img src={Settings} alt="" />
-          </NavLink>
+            <NavLink to="/settings">
+              <img src={Settings} alt="" />
+            </NavLink>
           </div>
         </div>
       </div>
