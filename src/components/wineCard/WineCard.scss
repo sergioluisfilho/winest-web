@@ -1,0 +1,36 @@
+.card {
+    display: flex;
+    justify-content: center; // Centrar horizontalmente
+    align-items: center; // Centrar verticalmente
+    flex-direction: column; // Organizar os filhos verticalmente
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+    border-radius: 10px;
+
+    h3 {
+      margin: 8px 0;
+      font-size: 14px;
+      font-weight: lighter;
+      text-align: center;
+    }
+
+    div {
+      display: flex;
+      font-size: 14px;
+      color: #7A1334;
+      justify-content: space-between;
+
+      img {
+        align-self: flex-start;
+        padding-right: 100%;
+      }
+    }
+  }

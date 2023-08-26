@@ -6,7 +6,6 @@ import Cards from "../../components/cards/Cards";
 import api from "../../api/axios";
 // import Wine from "../../components/wine/Wine"
 
-
 function Search() {
   const [filters, setFilters] = useState({
     offset: 0,
@@ -17,6 +16,13 @@ function Search() {
   const [wines, setWines] = useState([])
 
   // const [favorite, setFavorite] = useState(false);
+
+  function checkLikedStatus(wines, favorites) {
+    return wines.map(wine => {
+        const isLiked = favorites.some(favorite => favorite.wine.id === wine.id);
+        return { ...wine, isLiked };
+    });
+  }  
 
   const fetchWines = async () => {
     try {
@@ -30,11 +36,26 @@ function Search() {
     }
   }
 
+  const fetchFavorites = async () => {
+    try {
+      const response = await api.get('/favorites/wines')
+      return response.data.favoriteWines
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    fetchWines().then((data)=>{
-      setWines([...wines, ...data])
-    })
-  }, [filters])
+    Promise.all([fetchWines(), fetchFavorites()])
+      .then(([wineData, favoriteData]) => {
+        const winesWithFavoriteData = checkLikedStatus(wineData, favoriteData)
+        setWines([...wines, ...winesWithFavoriteData]);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      });
+  }, [filters]);
+  
 
   const handleSeeMore = () => {
     setFilters({
