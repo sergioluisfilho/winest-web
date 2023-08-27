@@ -10,8 +10,10 @@
     background-color: themed("wine");
     color: themed("textColor");
 
-    @include mobile{
-      display: none;
+    @include tablet{
+      // display: none;
+      padding: 5%;
+      flex: 1;
     }
 
     &::-webkit-scrollbar {
