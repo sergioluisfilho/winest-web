@@ -6,7 +6,7 @@ const Cards = ({wines}) => {
   return (
     <div className="card-grid">
       {wines.map((wine, index) => (
-        <WineCard wine={wine} index={index}/>
+        <WineCard wine={wine} index={index} key={index}/>
       ))}
     </div>
   );
