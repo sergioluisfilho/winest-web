@@ -4,9 +4,17 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Button from "@mui/material/Button";
 import Cards from "../../components/cards/Cards";
 import api from "../../api/axios";
-// import Wine from "../../components/wine/Wine"
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 function Search() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [IAContent, setIAContent] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+
   const [filters, setFilters] = useState({
     offset: 0,
     limit: 10,
@@ -68,13 +76,16 @@ function Search() {
     try {
       const { data } = await api.post('/wines/sugest')
       console.log(data)
-      data?.content && alert(data.content)
+      setIAContent(data?.content)
+      setIsLoading(false)
+      onOpenModal()
     } catch (error) {
       console.log(error)
     }
   }
 
   const handleIASuggestion = () => {
+    setIsLoading(true)
     fetchIASuggestions()
   }
 
@@ -107,6 +118,7 @@ function Search() {
   // }
 
   return (
+    <>
     <div className="search-page-container">
       <h1>Wine Search</h1>
       <div className="search">
@@ -122,12 +134,22 @@ function Search() {
             </Button>
         </div>
         <div className='ai-desc'>
+
+          {isLoading ? <p>loading...</p> : <>
           <span className='ai-tip'>Can't find anything? try our</span>
           <button className='ai-btn' onClick={handleIASuggestion}>A.I. Recommendation</button>
+          </>}
         </div>
       <Cards wines={wines}/>
       <Button className='seeMore-btn'onClick={handleSeeMore}>See more...</Button>
     </div>
+    <Modal open={open} onClose={onCloseModal} center>
+      <h2>IA Sugestion:</h2>
+      <p>
+        {IAContent}
+      </p>
+    </Modal>
+        </>
   )
 }
 
