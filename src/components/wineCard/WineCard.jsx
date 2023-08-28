@@ -39,12 +39,12 @@ function WineCard({wine, index}) {
         <div className='wine-img'>
             <img src={GenericWineImage} alt={wine.title}></img>
             {isLiked ?
-                <FavoriteOutlinedIcon onClick={handleAddWineToFavorite} /> :
-                <FavoriteBorderOutlinedIcon onClick={handleAddWineToFavorite}/>
+                <FavoriteOutlinedIcon id="favorite" onClick={handleAddWineToFavorite} /> :
+                <FavoriteBorderOutlinedIcon id="unfavorite" onClick={handleAddWineToFavorite}/>
             }
         </div>
-        <h3>
-            <Abbreviate texto={wine.title}/>
+        <h3 id="wine-name">
+            <Abbreviate  texto={wine.title}/>
         </h3>
   </div>
   )

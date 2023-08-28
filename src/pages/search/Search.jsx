@@ -122,7 +122,7 @@ function Search() {
     <div className="search-page-container">
       <h1>Wine Search</h1>
       <div className="search">
-          <input type="text" value={filters.search} onChange={(e) => {
+          <input id="search-field" type="text" value={filters.search} onChange={(e) => {
           setWines([])
           setFilters({
             ...filters,
@@ -144,7 +144,7 @@ function Search() {
       <Button className='seeMore-btn'onClick={handleSeeMore}>See more...</Button>
     </div>
     <Modal open={open} onClose={onCloseModal} center>
-      <h2>IA Sugestion:</h2>
+      <h2 id="ai-dialog">IA Sugestion:</h2>
       <p>
         {IAContent}
       </p>

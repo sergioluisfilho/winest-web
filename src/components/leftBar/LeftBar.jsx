@@ -19,19 +19,19 @@ const LeftBar = () => {
     <div className="leftBar">
       <div className="container">
         <div className="menu">
-          <div>
+          <div id="home">
             <NavLink to="/">
               <img src={Home} alt="" />
             </NavLink>
           </div>
-          <div>
+          <div id="search">
             <NavLink to="/search">
               <img src={Search} alt="" />
             </NavLink>
           </div>
           {<div>
             <NavLink to="/favorites">
-              <img src={Favorites} alt="" />
+              <img id="favorites" src={Favorites} alt="" />
             </NavLink>
           </div>}
           {/* <div>
@@ -39,7 +39,7 @@ const LeftBar = () => {
               <img src={Message} alt="" />
             </NavLink>
           </div> */}
-          <div>
+          <div id="profile">
             <NavLink to={`/profile/${currentUser.id}`}>
               <img src={Profile} alt="" />
             </NavLink>
@@ -49,7 +49,7 @@ const LeftBar = () => {
             <img src={Notifications} alt="" />
             </NavLink>
           </div> */}
-          <div>
+          <div id="settings">
             <NavLink to="/settings">
               <img src={Settings} alt="" />
             </NavLink>

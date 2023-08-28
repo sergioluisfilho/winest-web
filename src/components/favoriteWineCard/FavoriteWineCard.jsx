@@ -23,7 +23,7 @@ function FavoriteWineCard({wine, index, onRemove}) {
     <div key={index} className="card">
         <div className='wine-img'>
             <img src={GenericWineImage} alt={wine.title}></img>
-                <FavoriteOutlinedIcon onClick={handleRemoveWineFromFavorites}/>
+                <FavoriteOutlinedIcon id="unfavorite-icon" onClick={handleRemoveWineFromFavorites}/>
         </div>
         <h3>
             <Abbreviate texto={wine.title}/>

@@ -59,15 +59,15 @@ const Comments = ({postId, onNewCommentCreated}) => {
     <div className="comments">
       <div className="write">
         <img src={currentUser.profilePic} alt="" />
-        <input type="text" placeholder="write a comment" value={content} onChange={(e) => setContent(e.target.value)} />
-        <button onClick={handleComment}>Send</button>
+        <input id="comment-input-field" type="text" placeholder="write a comment" value={content} onChange={(e) => setContent(e.target.value)} />
+        <button id="submit-comment" onClick={handleComment}>Send</button>
       </div>
       {comments.map((comment) => (
         <div className="comment" key={comment.id}>
           <img src={comment.User.profilePictureUrl} alt="" />
           <div className="info">
             <span>{comment.User.name}</span>
-            <p>{comment.content}</p>
+            <p id="comment-content">{comment.content}</p>
           </div>
           <span className="date">{comment.createdAt}</span>
         </div>

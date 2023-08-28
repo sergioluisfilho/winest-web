@@ -84,16 +84,16 @@ const Post = ({ post }) => {
           <MoreHorizIcon />
         </div>
         <div className="content">
-          <p>{post.content}</p>
+          <p id="post-text">{post.content}</p>
           <img src={post.imgSource} alt="" />
         </div>
         <div className="info">
           <div className="item" onClick={handleLike}>
-            {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
+            {liked ? <FavoriteOutlinedIcon id="liked"/> : <FavoriteBorderOutlinedIcon id="not-liked"/>}
             {likesAmount}
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
-            <TextsmsOutlinedIcon />
+            <TextsmsOutlinedIcon id="comment"/>
             {commentAmount}
           </div>
           {/* <div className="item">

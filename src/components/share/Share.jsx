@@ -36,7 +36,7 @@ const Share = () => {
             src={currentUser.profilePic}
             alt=""
           />
-          <input type="text" placeholder={`What's on your mind ${currentUser.name}?`} value={content} onChange={(e) => setContent(e.target.value)}/>
+          <input id="post-draft" type="text" placeholder={`What's on your mind ${currentUser.name}?`} value={content} onChange={(e) => setContent(e.target.value)}/>
         </div>
         <hr />
         <div className="bottom">
@@ -50,7 +50,7 @@ const Share = () => {
             </label>
           </div>
           <div className="right">
-            <button onClick={handleClick}>Share</button>
+            <button id="share-post" onClick={handleClick}>Share</button>
           </div>
         </div>
       </div>
