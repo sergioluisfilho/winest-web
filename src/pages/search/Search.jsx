@@ -145,9 +145,9 @@ function Search() {
     </div>
     <Modal open={open} onClose={onCloseModal} center>
       <h2 id="ai-dialog">IA Sugestion:</h2>
-      <p>
+      <pre>
         {IAContent}
-      </p>
+      </pre>
     </Modal>
         </>
   )
