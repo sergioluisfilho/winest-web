@@ -17,7 +17,8 @@ public class Logout {
     @Before
     public void setup() throws Exception {
         // Start Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
+        // System.setProperty("webdriver.chrome.driver",
+        // "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
 
         // Initializar WebDriver
         mDriver = new ChromeDriver();
@@ -56,12 +57,12 @@ public class Logout {
         WebElement loginBtn = mDriver.findElement(By.cssSelector(".login-btn"));
         loginBtn.click();
         Thread.sleep(5000);
-       
+
         // Navigate to Settings
         WebElement settings = mDriver.findElement(By.id("settings"));
         settings.click();
         Thread.sleep(1000);
- 
+
         // Navigate to Settings
         WebElement logout = mDriver.findElement(By.id("logout"));
         logout.click();

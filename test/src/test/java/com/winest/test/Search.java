@@ -24,7 +24,8 @@ public class Search {
     @Before
     public void setup() throws Exception {
         // Start Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
+        // System.setProperty("webdriver.chrome.driver",
+        // "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
 
         // Initializar WebDriver
         mDriver = new ChromeDriver();
@@ -100,7 +101,7 @@ public class Search {
         // Tap AI Suggestion button
         WebElement aiBtn = mDriver.findElement(By.cssSelector(".ai-btn"));
         aiBtn.click();
-        
+
         // Wait for AI Suggestion dialog
         assertTrue(mWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ai-dialog"))).isDisplayed());
     }

@@ -17,7 +17,8 @@ public class Login {
     @Before
     public void setup() throws Exception {
         // Start Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
+        // System.setProperty("webdriver.chrome.driver",
+        // "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
 
         // Initializar WebDriver
         mDriver = new ChromeDriver();

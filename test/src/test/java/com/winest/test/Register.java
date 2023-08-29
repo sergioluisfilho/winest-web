@@ -2,8 +2,8 @@ package com.winest.test;
 
 import static org.junit.Assert.assertTrue;
 import java.time.Duration;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime; 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 
 import org.junit.After;
 import org.junit.Before;
@@ -20,7 +20,8 @@ public class Register {
     @Before
     public void setup() throws Exception {
         // Start Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
+        // System.setProperty("webdriver.chrome.driver",
+        // "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
 
         // Initializar WebDriver
         mDriver = new ChromeDriver();
@@ -70,14 +71,14 @@ public class Register {
         email.sendKeys(EMAIL);
         password.sendKeys(PASSWORD);
         birthdayDate.sendKeys(BIRTHDAY_DATE);
-        phone.sendKeys(PHONE); 
+        phone.sendKeys(PHONE);
 
         // Tap Sign In
         WebElement signUp = mDriver.findElement(By.cssSelector(".register-btn"));
         signUp.click();
         Thread.sleep(4000);
 
-        // Find login  input fields
+        // Find login input fields
         WebElement emailField = mDriver.findElement(By.name("email"));
         WebElement passwordField = mDriver.findElement(By.name("password"));
 

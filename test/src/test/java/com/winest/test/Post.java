@@ -19,7 +19,8 @@ public class Post {
     @Before
     public void setup() throws Exception {
         // Start Chrome Driver
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
+        // System.setProperty("webdriver.chrome.driver",
+        // "src\\test\\java\\com\\winest\\test\\chromedriver.exe");
 
         // Initializar WebDriver
         mDriver = new ChromeDriver();
@@ -60,7 +61,7 @@ public class Post {
     public void publishPost() throws Exception {
 
         String POST_CONTENT = Instant.now().toString();
-       
+
         // Share a post
         WebElement postField = mDriver.findElement(By.id("post-draft"));
         postField.sendKeys(POST_CONTENT);
